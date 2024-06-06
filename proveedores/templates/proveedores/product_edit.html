@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if product %}Editar{% else %}Agregar{% endif %} producto</title>
+</head>
+<body>
+    <h1>{% if producto %}Editar producto{% else %}Nuevo producto{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" value="{% if product %}{{ product.name }}{% endif %}" required>
+        <!-- <br> -->
+        <label for="price">Precio:</label>
+        <input type="number" step="0.01" name="price" id="price" value="{{ product.price }}" required>
+        <!-- <br> -->
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description" required>{% if product %}{{ product.description }}{% endif %}</textarea>
+        <!-- <br> -->
+        <button type="submit">Guardar</button>
+        <a href="{% url 'proveedores:product_list' %}" class="cancelar">Cancelar</a>
+    </form>
+</body>
+</html>

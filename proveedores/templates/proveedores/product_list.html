@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de productos</title>
+</head>
+<body>
+    <h1>Productos</h1>
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li><a href="{% url 'proveedores:product_detail' product.id %}">{{ product.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay productos</p>
+    {% endif %}
+
+    <a href="{% url 'proveedores:product_new' %}" class="crear">Agregar un nuevo producto</a>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+    </form>
+</body>
+</html>
