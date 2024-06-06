@@ -6,14 +6,15 @@
     <title>Iniciar sesión</title>
 </head>
 <body>
-    <h2>Iniciar sesión</h2>
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Iniciar sesión</button>
-    </form>
-    {% if form.errors %}
-        <p>Usuario o contraseña incorrectos</p>
-    {% endif %}
+    
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+<p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+{% endblock %}
 </body>
 </html>

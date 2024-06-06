@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from . import views
 
 app_name = 'proveedores'
@@ -14,4 +15,7 @@ urlpatterns = [
     path('<int:pk>/edit/', views.product_update, name='product_update'),
     # URL para eliminar un producto
     path('<int:pk>/delete/', views.product_delete, name='product_delete'),
+
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+
 ]
