@@ -8,13 +8,13 @@
 <body>
     
 {% block content %}
-<h2>Login</h2>
+<h2>Iniciar sesión</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Login</button>
+  <button type="submit">Iniciar sesión</button>
 </form>
-<p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+<p>¿No tienes cuenta? <a href="{% url 'signup' %}">Registate aquí</a></p>
 {% endblock %}
 </body>
 </html>
