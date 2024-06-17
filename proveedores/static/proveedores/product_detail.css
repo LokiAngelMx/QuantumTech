@@ -1,0 +1,49 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+p {
+    margin-bottom: 10px;
+}
+button, .editar, .regresar {
+    width: 48%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+.editar {
+    background-color: #ffc107;
+}
+.editar:hover {
+    background-color: #e0a800;
+}
+button {
+    background-color: #dc3545;
+}
+button:hover {
+    background-color: #c82333;
+}
+.regresar {
+    background-color: #6c757d;
+}
+.regresar:hover {
+    background-color: #5a6268;
+}
