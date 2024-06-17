@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrarse</title>
+    {% load static %}
+    <link href="{% static 'proveedores/signup.css' %}" rel="stylesheet">
 </head>
 <body>
-
-{% block content %}
-  <h2>Registrate</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrate</button>
-  </form>
-{% endblock %}
+    <div class="container">
+        {% block content %}
+        <h2>Registrarse</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+        {% endblock %}
+    </div>
 </body>
 </html>
-

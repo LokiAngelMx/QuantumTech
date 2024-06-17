@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del producto</title>
+    {% load static %}
+    <link href="{% static 'proveedores/product_detail.css' %}" rel="stylesheet">
 </head>
 <body>
-    <h1>{{ product.name }}</h1>
-    <p>Precio: ${{ product.price }}</p>
-    <p>{{ product.description }}</p>
-    <a href="{% url 'proveedores:product_update' product.id %}" class="editar">Editar</a>
-    <a href="{% url 'proveedores:product_delete' product.id %}" class="editar">Eliminar</a>
-    <a href="{% url 'proveedores:product_list' %}" class="regresar">Volver a la lista de productos</a>
+    <div class="container">
+        <h1>{{ product.name }}</h1>
+        <p>Precio: ${{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <a href="{% url 'proveedores:product_update' product.id %}" class="editar">Editar</a>
+        <a href="{% url 'proveedores:product_delete' product.id %}" class="editar ml-2">Eliminar</a>
+        <a href="{% url 'proveedores:product_list' %}" class="regresar">Volver a la lista de productos</a>
+    </div>
 </body>
 </html>
