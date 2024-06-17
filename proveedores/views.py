@@ -6,10 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Product
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from .forms import SignUpForm
+from django.contrib.auth import login, authenticate, update_session_auth_hash
+from .forms import SignUpForm, UserUpdateForm, PasswordUpdateForm
 
-# Vista para registrar un proveedor
+## Vista para registrar un proveedor
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -25,6 +25,30 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+# Vista para editar información de usuario
+@login_required
+def user_update(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        password_form = PasswordUpdateForm(request.POST)
+        if user_form.is_valid() and password_form.is_valid():
+            user_form.save()
+            password = password_form.cleaned_data.get('password')
+            if password:
+                request.user.set_password(password)
+                request.user.save()
+                update_session_auth_hash(request, request.user)  # Para mantener la sesión después de cambiar la contraseña
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        password_form = PasswordUpdateForm()
+    return render(request, 'registration/user_update.html', {'user_form': user_form, 'password_form': password_form})
+
+# Vista de perfil de usuario
+@login_required
+def profile(request):
+    return render(request, 'registration/profile.html')
 
 # Vista de lista de productos
 class ProductListView(LoginRequiredMixin, generic.ListView):

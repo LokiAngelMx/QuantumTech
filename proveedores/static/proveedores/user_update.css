@@ -1,6 +1,5 @@
-/* signup.css */
 body {
-    background-color: #e9ecef;
+    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
 }
 .container {
@@ -8,7 +7,7 @@ body {
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
-    border: 1px solid #ced4da;
+    border: 1px solid #dee2e6;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -19,28 +18,21 @@ h2 {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #007bff;
     border: none;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
 }
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
-a.cancelar {
+a {
     display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #dc3545;
-    color: #fff;
+    margin-top: 10px;
     text-align: center;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
+    color: #007bff;
 }
-a.cancelar:hover {
-    background-color: #c82333;
+a:hover {
+    text-decoration: underline;
 }
