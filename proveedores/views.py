@@ -5,11 +5,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from .models import Product
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, update_session_auth_hash
 from .forms import SignUpForm, UserUpdateForm, PasswordUpdateForm
 
-## Vista para registrar un proveedor
+# Vista para registrar un proveedor
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -21,7 +20,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('login')
+            return redirect('proveedores:profile')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -39,7 +38,7 @@ def user_update(request):
                 request.user.set_password(password)
                 request.user.save()
                 update_session_auth_hash(request, request.user)  # Para mantener la sesión después de cambiar la contraseña
-            return redirect('profile')
+            return redirect('proveedores:profile')
     else:
         user_form = UserUpdateForm(instance=request.user)
         password_form = PasswordUpdateForm()

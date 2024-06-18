@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    {% load static %}
-    <link href="{% static 'proveedores/profile.css' %}" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h2>Perfil de {{ user.username }}</h2>
-        <p>Email: {{ user.email }}</p>
-        <a href="{% url 'proveedores:user_update' %}">Editar perfil</a>
-        <a href="{% url 'proveedores:logout' %}">Cerrar sesión</a>
-    </div>
-</body>
-</html>
+{% extends "proveedores/base.html" %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<h2>Perfil de {{ user.username }}</h2>
+<p>Email: {{ user.email }}</p>
+<a href="{% url 'proveedores:user_update' %}" class="btn btn-primary">Editar perfil</a>
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-secondary btn-logout">Cerrar sesión</button>
+</form>
+{% endblock %}

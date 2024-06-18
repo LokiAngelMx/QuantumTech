@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    {% load static %}
-    <link href="{% static 'proveedores/signup.css' %}" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        {% block content %}
-        <h2>Registrarse</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Registrarse</button>
-        </form>
-        <a href="{% url 'proveedores:login' %}" class="cancelar">Cancelar</a>
-        {% endblock %}
-    </div>
-</body>
-</html>
+{% extends "proveedores/base.html" %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block content %}
+<h2>Registrarse</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>
+<a href="{% url 'proveedores:login' %}" class="btn btn-secondary cancelar">Cancelar</a>
+{% endblock %}

@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de productos</title>
-    {% load static %}
-    <link href="{% static 'proveedores/product_list.css' %}" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1>Productos</h1>
-        {% if products %}
-            <ul>
-                {% for product in products %}
-                    <li>
-                        <a href="{% url 'proveedores:product_detail' product.id %}">{{ product.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No hay productos</p>
-        {% endif %}
-        <a href="{% url 'proveedores:product_new' %}" class="crear">Agregar un nuevo producto</a>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Cerrar sesión</button>
-        </form>
-    </div>
-</body>
-</html>
+{% extends "proveedores/base.html" %}
+
+{% block title %}Lista de productos{% endblock %}
+
+{% block content %}
+<h1>Productos</h1>
+{% if products %}
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'proveedores:product_detail' product.id %}">{{ product.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay productos</p>
+{% endif %}
+<a href="{% url 'proveedores:product_new' %}" class="crear btn-success">Agregar un nuevo producto</a>
+{% endblock %}
